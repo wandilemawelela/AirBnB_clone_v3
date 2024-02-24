@@ -13,6 +13,9 @@ from os import getenv
 
 app = Flask(__name__)
 
+# Enable pretty-printing of JSON responses
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 app.register_blueprint(app_views)
 
 
