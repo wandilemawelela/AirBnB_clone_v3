@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-app module
+This module serves as the entry point for the API application.
 """
 
 from models import storage
@@ -14,14 +14,25 @@ app = Flask(__name__)
 
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def teardown(exception):
-    """closing the storage"""
+    """
+    teardown(exception)
+
+    Function to be executed when the application context is torn down.
+    It closes the database connection.
+
+    Args:
+        exception: An exception object, if any, that triggered the teardown.
+
+    Returns:
+        None
+    """
     storage.close()
+
 
 if __name__ == "__main__":
     host = getenv('HBNB_API_HOST', '0.0.0.0')
     port = int(getenv('HBNB_API_PORT', '5000'))
     app.run(host=host, port=port, threaded=True)
-
-    
