@@ -5,7 +5,7 @@ This module serves as the entry point for the API application.
 """
 
 from models import storage
-from flask import Flask
+from flask import Flask, jsonify
 from api.v1.views import app_views
 from os import getenv
 
@@ -33,6 +33,14 @@ def teardown(exception):
         None
     """
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """
+    Handle 404 errors by returning a JSON-formatted response.
+    """
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
