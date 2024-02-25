@@ -4,14 +4,8 @@
 This module serves as the entry point for the API application.
 """
 
-<<<<<<< HEAD
-from urllib.parse import quote as url_quote
-from flask import Flask
-from models import storage
-=======
 from models import storage
 from flask import Flask, jsonify
->>>>>>> origin/master
 from api.v1.views import app_views
 from os import getenv
 
