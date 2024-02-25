@@ -40,7 +40,7 @@ def stats():
     """
 
     classes = [Amenity, Place, User, City, Review, State]
-    names = ['amenities', 'cities', 'places', 'reviews',  'states', 'users']
+    names = ['amenities', 'cities', 'places', 'reviews', 'states', 'users']
     numbers_obj = {}
     for i in range(len(classes)):
         numbers_obj[names[i]] = storage.count(classes[i])
