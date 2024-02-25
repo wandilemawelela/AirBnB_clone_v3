@@ -32,6 +32,7 @@ def stats():
     Returns:
         JSON: A JSON response with the counts of each object type.
     """
+
     """
     counts = {
         'amenities': storage.count('Amenity'),
