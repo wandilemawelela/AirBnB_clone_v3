@@ -39,8 +39,8 @@ def stats():
         JSON: A JSON response with the counts of each object type.
     """
 
-    classes = [Amenity, Place, User, City, Review, State]
-    names = ['amenities', 'cities', 'places', 'reviews', 'states', 'users']
+    classes = [Amenity, City, Place, Review, State, User]
+    names = ['amenities', 'cities', 'places', 'reviews',  'states', 'users']
     numbers_obj = {}
     for i in range(len(classes)):
         numbers_obj[names[i]] = storage.count(classes[i])
