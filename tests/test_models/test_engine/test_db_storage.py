@@ -89,6 +89,7 @@ class TestFileStorage(unittest.TestCase):
 
 
 class TestDbStoragefunc(unittest.TestCase):
+
     def test_get(self):
         state = State(name="California")
         db_storage.DBStorage().new(state)
@@ -105,5 +106,6 @@ class TestDbStoragefunc(unittest.TestCase):
         db_storage.DBStorage().new(city1)
         db_storage.DBStorage().new(city2)
         db_storage.DBStorage().save()
+
         city_count = db_storage.DBStorage().count()
         self.assertEqual(len(city_count), 2)
