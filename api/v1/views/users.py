@@ -20,7 +20,7 @@ def get_user(user_id):
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def post_user():
-    "create a user"
+    """ Creates a User object. """
     data = request.get_json()
     if data is None:
         abort(400, 'Not a JSON')
