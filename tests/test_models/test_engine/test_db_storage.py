@@ -66,6 +66,7 @@ test_db_storage.py'])
                              "{:s} method needs a docstring".format(func[0]))
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
+            
 
 
 class TestFileStorage(unittest.TestCase):
@@ -86,24 +87,31 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
-
-
+        
 class TestDbStoragefunc(unittest.TestCase):
+    ## Test the methods
     def test_get(self):
         state = State(name="California")
         db_storage.DBStorage().new(state)
         db_storage.DBStorage().save()
 
+        # Retrieve the state object from the database
         retrieve_state = db_storage.DBStorage().get(State, state.id)
+        
+        # Check if the retrieved state object is the same as the original state object
         self.assertEqual(state, retrieve_state)
+
 
     def test_count(self):
         """ Test the number of objects"""
-        city1 = City(name="Kigali")
-        city2 = City(name="Rabat")
+        city1  = City(name="Kigali")
+        city2  = City(name="Rabat")
 
         db_storage.DBStorage().new(city1)
         db_storage.DBStorage().new(city2)
         db_storage.DBStorage().save()
+        
         city_count = db_storage.DBStorage().count()
         self.assertEqual(len(city_count), 2)
+
+        
